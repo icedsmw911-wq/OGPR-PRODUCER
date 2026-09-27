@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGPR | Official Producer & Sound Architect</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne (Premium Header) & Plus Jakarta Sans (Clean Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        crimson: '#900C3F',
+                        darkBg: '#0A0A0A',
+                        cardBg: '#141414',
+                        borderMuted: '#262626'
+                    },
+                    fontFamily: {
+                        heading: ['Syne', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #FFF 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .genre-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .genre-card:hover {
+            transform: translateY(-8px);
+            border-color: #D4AF37;
+            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.2);
+        }
+        .modal {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-200 font-body antialiased selection:bg-gold selection:text-black">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-borderMuted bg-black/80 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <h1 class="font-heading text-3xl font-extrabold tracking-wider text-white">OGPR<span class="text-gold">.</span></h1>
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase text-gray-400">
+                <a href="#about" class="hover:text-gold transition-colors">About</a>
+                <a href="#music" class="hover:text-gold transition-colors">Discography</a>
+                <a href="#genres" class="hover:text-gold transition-colors">Genres</a>
+                <a href="#criteria" class="hover:text-gold transition-colors">Collab Terms</a>
+            </nav>
+            <a href="#contact" class="border border-gold text-gold hover:bg-gold hover:text-black transition-all px-5 py-2 text-xs font-bold uppercase tracking-widest">Get In Touch</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-28 px-6 text-center relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-darkBg to-darkBg">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-crimson font-bold text-xs uppercase tracking-[0.3em] inline-block mb-3">Pakistani Sound Architect</span>
+            <h1 class="font-heading text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-tight mb-6 uppercase">
+                Crafting <span class="gold-gradient">Timeless Beats</span> & Sonic Identities
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                West Coast • Dark Trap • Modern R&B • Emo Rap • Soul R&B • Disco • EDM
+            </p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="#music" class="bg-gold text-black font-bold text-sm uppercase tracking-widest px-8 py-4 hover:bg-white transition-all transform hover:-translate-y-1">Listen Discography</a>
+                <button onclick="openModal('collabModal')" class="border border-borderMuted bg-cardBg text-white font-bold text-sm uppercase tracking-widest px-8 py-4 hover:border-gold transition-all transform hover:-translate-y-1">Work With OGPR</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Language Toggle -->
+    <section id="about" class="py-20 px-6 bg-cardBg/50 border-y border-borderMuted">
+        <div class="max-w-4xl mx-auto bg-cardBg border border-borderMuted p-10 md:p-14 rounded-sm relative">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-borderMuted pb-6">
+                <div>
+                    <span class="text-gold text-xs font-bold uppercase tracking-widest">Biography</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mt-1">WHO IS OGPR?</h2>
+                </div>
+                
+                <!-- Language Toggle Buttons -->
+                <div class="mt-4 md:mt-0 flex space-x-2 bg-black p-1 border border-borderMuted">
+                    <button id="btnEng" onclick="switchLang('eng')" class="px-4 py-1.5 text-xs font-bold tracking-wider uppercase transition-all bg-gold text-black">ENG</button>
+                    <button id="btnUrdu" onclick="switchLang('urdu')" class="px-4 py-1.5 text-xs font-bold tracking-wider uppercase transition-all text-gray-400 hover:text-white">Roman Urdu</button>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div id="textEng" class="space-y-4 text-gray-300 leading-relaxed font-light text-base md:text-lg">
+                <p>
+                    <strong class="text-white font-semibold">OGPR</strong> is a versatile Pakistani music producer with years of experience shaping unique acoustic environments. Before stepping into the limelight under his official moniker, he spent <strong class="text-gold">3 years working anonymously</strong> crafting ghost productions and beats for artists to build an uncompromised portfolio.
+                </p>
+                <p>
+                    Known for his wide sonic range, OGPR seamlessly transitions across various moods—from heavy West Coast bounce and dark trap atmospheres to soulful R&B, emo rap, disco grooves, and electronic EDM soundscapes.
+                </p>
+            </div>
+
+            <!-- Roman Urdu Content (Hidden by default) -->
+            <div id="textUrdu" class="hidden space-y-4 text-gray-300 leading-relaxed font-light text-base md:text-lg">
+                <p>
+                    <strong class="text-white font-semibold">OGPR</strong> ek Pakistani music producer hain. Industry mein official entry se pehle unhone <strong class="text-gold">3 saal tak anonymously</strong> alag-alag artists ke liye beats banayi aur ghost production ki, taaki wo apna solid portfolio aur mastery build kar sakein.
+                </p>
+                <p>
+                    Unka sound multi-genre aur highly versatile hai—West Coast bounce se lekar Dark Trap, Sad Boy Emo Rap, Soulful R&B, Disco R&B aur Dance/EDM tak har vibe par unka full control hai.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music & Spotify Section with Clickable Cards -->
+    <section id="music" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-gold text-xs font-bold uppercase tracking-widest">Portfolio</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-white mt-1">STREAM & DISCOVER</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Spotify Card -->
+                <div onclick="openModal('spotifyModal')" class="bg-cardBg border border-borderMuted p-8 cursor-pointer hover:border-gold transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xs font-bold tracking-widest uppercase text-gold">Spotify</span>
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3">Official Discography</h3>
+                    <p class="text-gray-400 text-sm font-light">Stream official releases, instrumentals, and Spotify playlists directly.</p>
+                </div>
+
+                <!-- BandLab Card -->
+                <div onclick="openModal('bandlabModal')" class="bg-cardBg border border-borderMuted p-8 cursor-pointer hover:border-gold transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xs font-bold tracking-widest uppercase text-crimson">BandLab</span>
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-crimson transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3">Beat Previews</h3>
+                    <p class="text-gray-400 text-sm font-light">Listen to unreleased beat demos and WIP production tracks on BandLab.</p>
+                </div>
+
+                <!-- YouTube Card -->
+                <div onclick="openModal('youtubeModal')" class="bg-cardBg border border-borderMuted p-8 cursor-pointer hover:border-gold transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xs font-bold tracking-widest uppercase text-gold">YouTube</span>
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3">Visuals & Channel</h3>
+                    <p class="text-gray-400 text-sm font-light">Watch beat cookups, studio sessions, and official visualizers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genre Matrix (Elevating Cards on Hover) -->
+    <section id="genres" class="py-24 px-6 bg-cardBg/50 border-y border-borderMuted">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="text-crimson text-xs font-bold uppercase tracking-widest">Sonic Spectrum</span>
+            <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-white mt-1 mb-12">PRODUCTION GENRES</h2>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">WEST COAST</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">DARK TRAP</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">SAD BOY / EMO</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">MODERN R&B</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">SOUL R&B</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">DISCO R&B</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-white">DANCE / EDM</p>
+                </div>
+                <div class="genre-card bg-cardBg border border-borderMuted p-6 rounded-sm">
+                    <p class="font-heading text-lg font-bold text-gold">CUSTOM BEATS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collab & PDF Section -->
+    <section id="criteria" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto bg-cardBg border border-borderMuted p-10 md:p-14 text-center">
+            <span class="text-gold text-xs font-bold uppercase tracking-widest">Client Guidelines</span>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mt-1 mb-4">CRITERIA FOR WORKING WITH OGPR</h2>
+            <p class="text-gray-400 font-light max-w-xl mx-auto mb-8">
+                Please review the terms, pricing tiers, and collaboration guidelines before submitting your custom beat or production requests.
+            </p>
+            <button onclick="openModal('collabModal')" class="bg-gold text-black font-bold text-xs uppercase tracking-widest px-8 py-4 hover:bg-white transition-all">
+                View & Download Criteria (PDF)
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 border-t border-borderMuted text-center bg-black">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="font-heading text-2xl font-bold text-white mb-6">CONNECT WITH OGPR</h2>
+            <div class="flex justify-center space-x-6 text-sm font-semibold tracking-wider text-gray-400 uppercase mb-8">
+                <a href="https://instagram.com/OGPR_SNIFFS" target="_blank" class="hover:text-gold transition-colors">Instagram (@OGPR_SNIFFS)</a>
+                <a href="https://youtube.com/@theycallmeogpr?si=mO3QkEMevhyt350K" target="_blank" class="hover:text-gold transition-colors">YouTube</a>
+            </div>
+            <p class="text-gray-600 text-xs tracking-widest uppercase">© 2026 OGPR. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- POPUP MODALS -->
+
+    <!-- Spotify Modal -->
+    <div id="spotifyModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-borderMuted max-w-2xl w-full p-6 relative">
+            <button onclick="closeModal('spotifyModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            <h3 class="font-heading text-2xl font-bold text-white mb-4">OGPR on Spotify</h3>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/5hPPSflnTM6N2Kub419ik0?utm_source=generator&si=8a8e009f050b44aa" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- BandLab Modal -->
+    <div id="bandlabModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-borderMuted max-w-md w-full p-8 relative text-center">
+            <button onclick="closeModal('bandlabModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            <h3 class="font-heading text-2xl font-bold text-white mb-2">BandLab Portfolio</h3>
+            <p class="text-gray-400 text-sm mb-6">Listen to unreleased beat packs and exclusives on OGPR's BandLab page.</p>
+            <a href="https://bandlab.com/ogpr_sniffs" target="_blank" class="inline-block bg-gold text-black font-bold text-xs uppercase tracking-widest px-8 py-4 hover:bg-white transition-all w-full">Open @ogpr_sniffs on BandLab</a>
+        </div>
+    </div>
+
+    <!-- YouTube Modal -->
+    <div id="youtubeModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-borderMuted max-w-md w-full p-8 relative text-center">
+            <button onclick="closeModal('youtubeModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            <h3 class="font-heading text-2xl font-bold text-white mb-2">YouTube Channel</h3>
+            <p class="text-gray-400 text-sm mb-6">Subscribe to @theycallmeogpr for beat showcases, cookups, and official visualizers.</p>
+            <a href="https://youtube.com/@theycallmeogpr?si=mO3QkEMevhyt350K" target="_blank" class="inline-block bg-crimson text-white font-bold text-xs uppercase tracking-widest px-8 py-4 hover:bg-white hover:text-black transition-all w-full">Visit YouTube Channel</a>
+        </div>
+    </div>
+
+    <!-- Collab PDF Modal -->
+    <div id="collabModal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-borderMuted max-w-xl w-full p-8 relative text-center">
+            <button onclick="closeModal('collabModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            <h3 class="font-heading text-2xl font-bold text-white mb-2">Working Criteria & Terms</h3>
+            <p class="text-gray-400 text-sm mb-6">Review the official PDF outlining collaboration terms, beat purchase guidelines, and custom order rules.</p>
+            <a href="CRITERIA OF WORKING WITH OGPR.pdf" target="_blank" class="inline-block bg-gold text-black font-bold text-xs uppercase tracking-widest px-8 py-4 hover:bg-white transition-all w-full mb-3">Open / Download PDF</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Language Switcher Function
+        function switchLang(lang) {
+            const engText = document.getElementById('textEng');
+            const urduText = document.getElementById('textUrdu');
+            const btnEng = document.getElementById('btnEng');
+            const btnUrdu = document.getElementById('btnUrdu');
+
+            if (lang === 'eng') {
+                engText.classList.remove('hidden');
+                urduText.classList.add('hidden');
+                btnEng.className = 'px-4 py-1.5 text-xs font-bold tracking-wider uppercase transition-all bg-gold text-black';
+                btnUrdu.className = 'px-4 py-1.5 text-xs font-bold tracking-wider uppercase transition-all text-gray-400 hover:text-white';
+            } else {
+                urduText.classList.remove('hidden');
+                engText.classList.add('hidden');
+                btnUrdu.className = 'px-4 py-1.5 text-xs font-bold tracking-wider uppercase transition-all bg-gold text-black';
+                btnEng.className = 'px-4 py-1.5 text-xs font-bold tracking-wider uppercase transition-all text-gray-400 hover:text-white';
+            }
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
